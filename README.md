@@ -1,35 +1,25 @@
 # Fine-Tuning LLaMA-2 on Custom Dataset
-This project focuses on fine-tuning the LLaMA-2 model using a custom dataset, specifically designed for datasets with three key columns: instruction, source, and output. The dataset used in this project is "TIGER-Lab/MathInstruct".
-
-# Table of Contents
-Project Overview
-Requirements
-Dataset Structure
-Setup and Training
-Results and Evaluation
-# Project Overview
-The purpose of this project is to fine-tune LLaMA-2 with supervised learning, training it to generate accurate responses based on custom instructions and contexts.
+The goal of this project is to fine-tune the LLaMA-2 model using a text-based dataset to enhance its ability to generate coherent and contextually appropriate responses based on the provided text input.
 
 # Requirements
-The following Python libraries are necessary:
+Ensure you have the following Python libraries installed:
 
 transformers
 datasets
 torch
 peft (for parameter-efficient fine-tuning)
 # Dataset Structure
-The custom dataset "TIGER-Lab/MathInstruct" contains:
+The dataset "mlabonne/guanaco-llama2-1k" consists of plain text entries. Each entry serves as a prompt for the model without any predefined structure like instruction, source, or output.
 
-instruction: The primary task or instruction.
-source: Additional context for the task.
-output: The expected response for each task.
 # Setup and Training
-Load Dataset: The dataset is loaded as a single training dataset.
-
-Tokenization: The instruction and source columns are combined to form the input text, while the output column is used as the target label for training.
-
-Fine-Tuning: The SFTTrainer is configured with specific training arguments for efficient supervised fine-tuning. Hyperparameters like learning rate, batch size, and epoch count are defined for optimal performance.
-
+Load Dataset: Load the dataset directly using the datasets library.
+Tokenization: Since the dataset is comprised of raw text, each text entry will be tokenized for model input.
+Fine-Tuning: Set up the training process, utilizing a trainer capable of handling fine-tuning efficiently.
 # Results and Evaluation
-After training, the model can be evaluated on various tasks to determine its performance and accuracy on similar instruction-based datasets. Logs and results are stored in designated directories for further analysis and refinement.
+After fine-tuning, evaluate the model's performance by generating text based on prompts derived from the dataset. Store logs and evaluation metrics for later analysis.
 
+Evaluation: Test the model's performance with unseen prompts to assess its response generation capabilities.
+Logging: Use tools like TensorBoard to visualize training metrics and evaluate results.
+# Additional Considerations
+Hyperparameters: Experiment with hyperparameters such as learning rate, batch size, and number of epochs based on your hardware capabilities and dataset size.
+Data Preprocessing: Additional preprocessing steps may be needed to clean the text and format it appropriately for training objectives.
